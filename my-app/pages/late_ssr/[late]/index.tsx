@@ -4,11 +4,13 @@ type props = {
   ssr_value: string;
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context: {params: {late: number}}) => {
+  const late_ssr = Number(context.params?.late) || 0;
+  await new Promise((resolve) => setTimeout(resolve, late_ssr * 1000)); 
   return { props: { ssr_value: "ssr_value" } };
 };
 
-const Test = ({ ssr_value }: props) => {
+const LateTest = ({ ssr_value }: props) => {
   const [csr0s, setCsr0s] = useState<null | string>(null);
   const [csr1s, setCsr1s] = useState<null | string>(null);
   const [csr2s, setCsr2s] = useState<null | string>(null);
@@ -99,4 +101,4 @@ const Test = ({ ssr_value }: props) => {
   );
 };
 
-export default Test;
+export default LateTest;
