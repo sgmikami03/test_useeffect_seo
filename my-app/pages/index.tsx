@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Index = () => {
-
   return (
     <main>
-      <a href="/late_ssr/10">late ssr (10s)</a>
+      <Link href="/late_ssr/10">late ssr (10s)</Link>
       <br />
-      <a href="/not_late_ssr">not late ssr</a>
+      <Link href="/not_late_ssr">not late ssr</Link>
     </main>
   );
 };
